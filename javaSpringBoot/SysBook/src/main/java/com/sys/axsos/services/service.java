@@ -35,7 +35,7 @@ public class service {
     }
     
     public void deleteBook(Long id) {
-		bookRepository.delete(findBook(id));
+		bookRepository.deleteById(id);
     }
     
     // retrieves a book
