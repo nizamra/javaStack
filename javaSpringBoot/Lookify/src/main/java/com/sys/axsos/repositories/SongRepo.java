@@ -18,5 +18,10 @@ public interface SongRepo extends CrudRepository<Song, Long>{
  // this method counts how many titles contain a certain string
  Long countByTitleContaining(String search);
  // this method deletes a book that starts with a specific title
- Long deleteByTitleStartingWith(String search);
+ Long deleteByTitleStartingWith(String search); 
+ // this method finds top ten songs
+// findTop10ByOrderByRatingDesc
+ List<Song> findTop10ByOrderByRatingDesc();
+ List<Song> findTop10ByOrderByRatingAsc();
+// List<Song> findTop10ByOrderByRatingDesc();
 }

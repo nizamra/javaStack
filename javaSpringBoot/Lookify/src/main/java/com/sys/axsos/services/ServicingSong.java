@@ -12,9 +12,9 @@ import com.sys.axsos.repositories.SongRepo;
 public class ServicingSong {
     private final SongRepo songrepositoryinstance;
 
-    public ServicingSong(SongRepo songrepositoryinstance) {
+    public ServicingSong(SongRepo sonrepoinst) {
 		super();
-		this.songrepositoryinstance = songrepositoryinstance;
+		this.songrepositoryinstance = sonrepoinst;
 	}
     
 	public List<Song> songinstances() {
@@ -43,4 +43,15 @@ public class ServicingSong {
     	chang.setRating(b.getRating());
     	return songrepositoryinstance.save(chang);
     }
+
+	public List<Song> findByArtistContaining(String searchName) {
+		return songrepositoryinstance.findByArtistContaining(searchName);
+	}
+
+	public List<Song> getTopTen() {
+		return songrepositoryinstance.findTop10ByOrderByRatingDesc();
+	}
+	public List<Song> getTopTenAs() {
+		return songrepositoryinstance.findTop10ByOrderByRatingAsc();
+	}
 }

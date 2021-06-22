@@ -31,7 +31,27 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${songinstances}" var="song">
+        <c:forEach items="${baram}" var="song">
+        <tr>
+            <td><c:out value="${song.title}"/></td>
+            <td><c:out value="${song.artist}"/></td>
+            <td><c:out value="${song.rating}"/></td>
+            <td><a href="/songs/delete/${song.id}">Delete</a></td>
+        </tr>
+        </c:forEach>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Creator</th>
+            <th>Version</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${baramas}" var="song">
         <tr>
             <td><c:out value="${song.title}"/></td>
             <td><c:out value="${song.artist}"/></td>

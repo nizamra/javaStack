@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isErrorPage="true" %> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Haitham Abbas songsss</title>
+<title>Songs By Haitham Abbas Cousin</title>
 </head>
 <body>
-<h1>All songs</h1>
-<a href="/songs/new">addnew</a>
-<a href="/songs/top">Top Tens</a>
+<a href="/">Dashboard</a>
 
-
+<h1>Songs By <c:out value="${searchValue}"/> </h1>
 <form action="/song/searcher" method="POST">
   <label for="search">search:</label>
   <input type="text" id="search" name="search">
@@ -31,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${songinstances}" var="song">
+        <c:forEach items="${searchResult}" var="song">
         <tr>
             <td><c:out value="${song.title}"/></td>
             <td><c:out value="${song.artist}"/></td>
@@ -41,6 +39,5 @@
         </c:forEach>
     </tbody>
 </table>
-
 </body>
 </html>

@@ -1,36 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isErrorPage="true" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Haitham is adding a song</title>
 </head>
 <body>
-<h1>New Book</h1>
-<form:form action="/books" method="post" modelAttribute="book">
+<h1>New Song</h1>
+<a href="/">dashboard</a>
+
+
+
+
+
+
+
+
+<form:form action="/song/add" method="post" modelAttribute="songinstance">
     <p>
-        <form:label path="title">Title</form:label>
+        <form:label path="title">title</form:label>
         <form:errors path="title"/>
         <form:input path="title"/>
     </p>
     <p>
-        <form:label path="description">Description</form:label>
-        <form:errors path="description"/>
-        <form:textarea path="description"/>
+        <form:label path="artist">artist</form:label>
+        <form:errors path="artist"/>
+        <form:textarea path="artist"/>
     </p>
     <p>
-        <form:label path="language">Language</form:label>
-        <form:errors path="language"/>
-        <form:input path="language"/>
-    </p>
-    <p>
-        <form:label path="numberOfPages">Pages</form:label>
-        <form:errors path="numberOfPages"/>     
-        <form:input type="number" path="numberOfPages"/>
-    </p>    
-    <input type="submit" value="Submit"/>
+        <form:label path="rating">rating</form:label>
+        <form:errors path="rating"/>
+        <form:input path="rating"/>
+    </p>   
+    <input type="submit" value="Add Song"/>
 </form:form>    
 
 </body>

@@ -24,10 +24,10 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 5)
     private String title;
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 5)
     private String artist;
     @NotNull
     @Min(1)
