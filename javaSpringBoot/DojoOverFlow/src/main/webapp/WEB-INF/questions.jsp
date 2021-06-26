@@ -74,23 +74,28 @@ td:nth-child(2) { background: hsl(160, 60%, 50%); }
 </style>
 </head>
 <body>
+<a href="/logout">LogOut</a>
+
 <h1> Questions Dashboard</h1>
+<h1> Logged in as: ${logedInUser.email}</h1>
 	<table>
 	  <thead>
 	    <tr>
 	      <th>number</th>
 	      <th>Question</th>
 	      <th>Tags</th>
+	      <th>Action</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 		  <c:forEach items="${kolesso2alat}" var="samar">
 		    <tr>
 		      <td><c:out value="${samar.id}"></c:out></td>
-		      <td><a href="question/${samar.id}"><c:out value="${samar.question}"></c:out></a></td>
-				<c:forEach items="${samar.tags}" var="lubna">
-	      			<td>${lubna.subject}</td>
-			    </c:forEach>
+		      <td><a href="/question/${samar.id}"><c:out value="${samar.question}"></c:out></a></td>
+				<td><c:forEach items="${samar.tags}" var="lubna">
+	      			${lubna.subject}, 
+			    </c:forEach></td>
+			    <td><a href="/question/delete/${samar.id}">Delete</a></td>
 		    </tr>
 	    </c:forEach>
 	  </tbody>

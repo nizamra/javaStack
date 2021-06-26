@@ -74,6 +74,7 @@ td:nth-child(2) { background: hsl(160, 60%, 50%); }
 </head>
 <body>
 <a href="/">Home</a>
+<a href="/logout">LogOut</a>
 <h1> ${so2alak.question} </h1>
 <h1> Tags: 
 <c:forEach items="${so2alak.tags}" var="farawla">

@@ -9,6 +9,8 @@
 <title>Your Question</title>
 </head>
 <body>
+<a href="/">Home</a>
+<a href="/logout">LogOut</a>
 <h1>Whats Your Question</h1>
 <form:form action="/question/create" method="post" modelAttribute="amal">
     <p>
