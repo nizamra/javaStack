@@ -18,7 +18,7 @@
     </p>
     <p>
     	tags
-		<input name="tagss" title="separate by comma: PC, STP, IP"/>
+		<input type="text" name="tagss" title="separate by comma: PC, STP, IP"/>
     </p>
     <input type="submit" value="Submit"/>
 </form:form> 

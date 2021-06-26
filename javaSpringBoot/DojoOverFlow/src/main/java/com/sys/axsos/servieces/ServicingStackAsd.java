@@ -40,11 +40,11 @@ public class ServicingStackAsd {
 		return RepA.save(potato);
 	}
 
-	public Tag createtag(Tag potato) {
+	public Tag createTag(Tag potato) {
 		return RepTg.save(potato);
 	}
 
-	public QuestionsTags createMostafa(QuestionsTags potato) {
+	public QuestionsTags createQuestionsTags(QuestionsTags potato) {
 		return RepQnTg.save(potato);
 	}
 
@@ -70,6 +70,10 @@ public class ServicingStackAsd {
 		return RepTg.findBySubjectIgnoreCase(mazda);
 	}
 	
-
+	public Question findById(Long id) {
+		return RepQ.findById(id).get();
+	}
+	
+    
 	
 }

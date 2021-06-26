@@ -1,6 +1,7 @@
 package com.sys.axsos.models;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -92,9 +93,7 @@ public class Answer {
 	/**
 	 * @param question the question to set
 	 */
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
+	
 	/**
 	 * @param createdAt the createdAt to set
 	 */
@@ -102,10 +101,17 @@ public class Answer {
 		this.createdAt = createdAt;
 	}
 	/**
+	 * @param question the question to set
+	 */
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	/**
 	 * @param updatedAt the updatedAt to set
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 
 }

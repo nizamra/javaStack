@@ -46,6 +46,9 @@ public class Tag {
     
     public Tag() {
 	}
+    public Tag(String samia) {
+    	this.subject = samia;
+    }
     
 	@PrePersist
     protected void onCreate(){

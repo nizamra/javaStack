@@ -3,12 +3,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page isErrorPage="true" %> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Questions By Khamees</title>
+<title>some answer for you</title>
 <style>
 table {
 	border-collapse: collapse;
@@ -74,27 +73,35 @@ td:nth-child(2) { background: hsl(160, 60%, 50%); }
 </style>
 </head>
 <body>
-<h1> Questions Dashboard</h1>
+<a href="/">Home</a>
+<h1> ${so2alak.question} </h1>
+<h1> Tags: 
+<c:forEach items="${so2alak.tags}" var="farawla">
+	      			<button>${farawla.subject}</button>
+			    </c:forEach></h1>
 	<table>
 	  <thead>
 	    <tr>
-	      <th>number</th>
-	      <th>Question</th>
-	      <th>Tags</th>
+	      <th>Answers</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-		  <c:forEach items="${kolesso2alat}" var="samar">
-		    <tr>
-		      <td><c:out value="${samar.id}"></c:out></td>
-		      <td><a href="question/${samar.id}"><c:out value="${samar.question}"></c:out></a></td>
-				<c:forEach items="${samar.tags}" var="lubna">
-	      			<td>${lubna.subject}</td>
-			    </c:forEach>
-		    </tr>
-	    </c:forEach>
+			<c:forEach items="${so2alak.answers}" var="lubna">
+			    <tr>
+	      			<td>${lubna.answer}</td>
+			    </tr>
+		    </c:forEach>
 	  </tbody>
 	</table>
-	<a href="/question/new">New Question</a>
+	<br><br><br>
+	<form:form action="/answer/create/${so2alak.id}" method="post" modelAttribute="sarab">
+    <p>
+        <form:label path="answer">Answer</form:label>
+        <form:errors path="answer"/>
+        <form:input  path="answer"/>
+    </p>
+    <input type="submit" value="Answer it!"/>
+</form:form> 
+	
 </body>
 </html>

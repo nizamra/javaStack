@@ -76,28 +76,10 @@ public class Question {
 		return answers;
 	}
 	/**
-	 * @return the taqs
+	 * @return the tags
 	 */
-	public List<Tag> getTaqs() {
+	public List<Tag> getTags() {
 		return tags;
-	}
-	/**
-	 * @return the createdAt
-	 */
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	/**
-	 * @return the updatedAt
-	 */
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
 	}
 	/**
 	 * @param question the question to set
@@ -112,21 +94,10 @@ public class Question {
 		this.answers = answers;
 	}
 	/**
-	 * @param taqs the taqs to set
+	 * @param tags the tags to set
 	 */
-	public void setTaqs(List<Tag> taqs) {
-		this.tags = taqs;
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
-	/**
-	 * @param createdAt the createdAt to set
-	 */
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	/**
-	 * @param updatedAt the updatedAt to set
-	 */
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+	
 }

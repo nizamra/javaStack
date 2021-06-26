@@ -9,4 +9,5 @@ import com.sys.axsos.models.Question;
 public interface RepresintingQuestion extends CrudRepository<Question, Long> {
 	List<Question> findAll();
 
+
 }

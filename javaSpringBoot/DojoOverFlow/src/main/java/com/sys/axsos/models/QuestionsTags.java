@@ -38,7 +38,6 @@ public class QuestionsTags {
 
     
     public QuestionsTags() {
-		super();
 	}
 	@PrePersist
     protected void onCreate(){
