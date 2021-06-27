@@ -2,11 +2,13 @@ public class HumanTest{
     public static void main(String[] args){
         Human Layth = new Human();
         Human Baraa = new Human();
+
         // Human Sami = new Samurai();
         // Human Salah = new Samurai();
         // Human Sahl = new Samurai();
         // Human Naji = new Ninja();
         // Human Wadee = new Wizard();
+
         Samurai Sami = new Samurai();
         Samurai Salah = new Samurai();
         Samurai Sahl = new Samurai();
