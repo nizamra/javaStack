@@ -19,13 +19,13 @@ public class Goldss {
 	public static int goldValue = 0;
 	ArrayList<String> arr = new ArrayList<String>();
 	
-	@RequestMapping(value="/addGold", method= RequestMethod.POST)
-	public String fromGoldForm(HttpSession sefoodes){
-		
-		sefoodes.setAttribute("goldValue", goldValue);
-		return "redirect:/toNinjaGold";
-		
-	}
+//	@RequestMapping(value="/addGold", method= RequestMethod.POST)
+//	public String fromGoldForm(HttpSession sefoodes){
+//		
+//		sefoodes.setAttribute("goldValue", goldValue);
+//		return "redirect:/toNinjaGold";
+//		
+//	}
 	
 	@RequestMapping("/toNinjaGold")
 	public String toNinjaGold(HttpSession sefoodes) {
@@ -38,40 +38,30 @@ public class Goldss {
 	@RequestMapping(value = "/lol", method = RequestMethod.POST)
     public String manPage(HttpSession session, @RequestParam(value = "goldInput") String val) {
         if (val.equals("1")) {
-            int min = 1;
-            int max = 20;
-            int ran = (int) Math.floor(Math.random() * (max - min + 1) + min);
+            int ran = (int) Math.floor((Math.random() * 20) + 1);
             goldValue += ran;
             arr.add("You entered Army and earned "+ran+" of gold"+ new Date());
             }
         if (val.equals("2")) {
-
             Random r = new Random();
-            int min = 100;
-            int max = 150;
             int x = r.nextInt(2);
             if (x == 1) {
-                int ran = (int) Math.floor(Math.random() * (max - min + 1) + min);
+                int ran = (int) Math.floor(Math.random() * (50) + 100);
                 goldValue += ran;
                 arr.add("You entered Army and earned "+ran+" of gold"+ new Date());
             }
-
         }
         if (val.equals("3")) {
-            int min = 5;
-            int max = 10;
-            int ran = (int) Math.floor(Math.random() * (max - min + 1) + min);
+            int ran = (int) Math.floor(Math.random() * (5) + 5);
             goldValue -= ran;
             arr.add("You entered Army and lost "+ran+" of gold"+ new Date());
-
         }
         if (val.equals("4")) {
-            int min = 50;
-            int max = 100;
-            int ran = (int) Math.floor(Math.random() * (max - min + 1) + min);
+            int ran = (int) Math.floor(Math.random() * (50) + 50);
             goldValue -= ran;
             arr.add("You entered Army and lost "+ran+" of gold"+ new Date());
         }
+        
         session.setAttribute("gold", goldValue);
         return "redirect:/toNinjaGold";
     }

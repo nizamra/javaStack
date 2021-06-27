@@ -97,12 +97,9 @@
       <footer>
           <h5>Activities:</h5>
           <div>
-          
           <c:forEach items="${arr}" var="value">
 			  <p>${value}</p>
 			 </c:forEach>
-          
-         
         </div>
       </footer>
     </main>
