@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="countries")
 public class Country {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,25 +27,25 @@ public class Country {
 	private String head_of_state;
 	private int capital;
 	private String code2;
-    @Column(updatable=false)
-    private Date createdAt;
-    private Date updatedAt;
-    
-    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
-    private List<Language> languages;
-    
-    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
-    private List<City> cities;
-    @PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
-    
-    public Country() {}
+	@Column(updatable=false)
+	private Date createdAt;
+	private Date updatedAt;
+
+	@OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+	private List<Language> languages;
+
+	@OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+	private List<City> cities;
+	@PrePersist
+	protected void onCreate(){
+		this.createdAt = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate(){
+		this.updatedAt = new Date();
+	}
+
+	public Country() {}
 
 	/**
 	 * @return the id
@@ -291,5 +291,5 @@ public class Country {
 	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
-    
+
 }

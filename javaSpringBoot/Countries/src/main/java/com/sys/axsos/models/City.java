@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="cities")
 public class City {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -15,22 +15,22 @@ public class City {
 	private String country_code;
 	private String district;
 	private int population;
-    @Column(updatable=false)
-    private Date createdAt;
-    private Date updatedAt;
-	
+	@Column(updatable=false)
+	private Date createdAt;
+	private Date updatedAt;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="country_id")
 	private Country country;
 	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
-    
+	protected void onCreate(){
+		this.createdAt = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate(){
+		this.updatedAt = new Date();
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -108,5 +108,5 @@ public class City {
 		this.country = country;
 	}
 
-	
+
 }

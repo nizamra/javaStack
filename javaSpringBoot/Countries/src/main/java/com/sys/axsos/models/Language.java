@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="languages")
 public class Language {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -16,22 +16,22 @@ public class Language {
 	private String language;
 	private String is_official;
 	private Double percentage;
-    @Column(updatable=false)
-    private Date createdAt;
-    private Date updatedAt;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="country_id")
-    private Country country;
-    @PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
-    
+	@Column(updatable=false)
+	private Date createdAt;
+	private Date updatedAt;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="country_id")
+	private Country country;
+	@PrePersist
+	protected void onCreate(){
+		this.createdAt = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate(){
+		this.updatedAt = new Date();
+	}
+
 	public Language() {
 		super();
 	}
@@ -113,5 +113,5 @@ public class Language {
 		this.country = country;
 	}
 
-    
+
 }

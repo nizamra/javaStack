@@ -28,5 +28,18 @@ public class ServingCountries {
 		return RepFC.findAll();
 		
 	}
+	public List<Object[]> getSloveneCountries() {
+		return RepFC.returningSlovene();
+	}
+	public List<Object[]> getCitiesCount() {
+		return RepFC.returnCities();
+	}
+	public List<String> getMexCities() {
+		return RepFC.returnMexCities();
+	}
+	public List<Object[]> getLangPerc() {
+		return RepFC.returnLangPerc();
+	}
+	
 
 }
