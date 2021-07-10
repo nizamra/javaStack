@@ -149,7 +149,7 @@ public class User {
 //	private String passwd;
 //	private String planePassword;
 //	
-////  #059_813_521_321
+////  #0595_671_321
 //	private String mobile;
 ////	locationChoices=(('Ramallah', 'Ramallah'),('Hebron','Hebron'),('Nablus','Nablus'),('Jenin','Jenin'),('Bethlehem','Bethlehem'))
 //	private String location;

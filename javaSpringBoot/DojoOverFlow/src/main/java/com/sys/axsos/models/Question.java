@@ -26,7 +26,7 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@NotNull(message="Fucker DONT leave it blanc")
+	@NotNull(message="DONT leave it blanc")
 	private String question;
 	
 	@OneToMany(mappedBy="question", fetch = FetchType.LAZY)
