@@ -85,12 +85,14 @@ td:nth-child(2) {
 </style>
 <title>Insert title here</title>
 </head>
-<body style="width: 970px; height: 800px; margin:45px auto;">
+<body style="width: 970px; height: 800px; margin: 45px auto;">
 	<%-- theLogedInUser allEvents --%>
-	<h2>Welcome ${theLogedInUser.firstName} From: ${theLogedInUser.location} - ${theLogedInUser.state}</h2>
+	<h2>Welcome ${theLogedInUser.firstName} From:
+		${theLogedInUser.location} - ${theLogedInUser.state}</h2>
 
-	<a href="/logout">LogOut</a><br><br>
-	events in this state
+	<a href="/logout">LogOut</a>
+	<br>
+	<br> events in this state
 	<table>
 		<thead>
 			<tr>
@@ -125,7 +127,8 @@ td:nth-child(2) {
 							</c:when>
 							<c:otherwise>
 								<c:choose>
-									<c:when test="${ theLogedInUser.events.contains(nizar) } ">
+									<c:when
+										test="${ theLogedInUser.attendingEvents.contains(nizar)}">
 										<p>
 											Joining <a href="/cancel/event/${ nizar.id }">Cancel</a>
 										</p>
@@ -142,9 +145,9 @@ td:nth-child(2) {
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table><br><br>
-	
-	events in other states
+	</table>
+	<br>
+	<br> events in other states
 	<table>
 		<thead>
 			<tr>
@@ -160,7 +163,7 @@ td:nth-child(2) {
 			<c:forEach items="${kolelEventatMish3indak}" var="banat">
 				<tr>
 					<td><a href="/show/event/${ banat.id } "> ${banat.name} </a></td>
-					<td><fmt:formatDate pattern = "MM dd yyyy" value ="${banat.date}" /></td>
+					<td><fmt:formatDate pattern="MM dd yyyy" value="${banat.date}" /></td>
 					<td><c:out value="${banat.location}"></c:out></td>
 					<td><c:out value="${banat.state}"></c:out></td>
 					<td><c:out value="${banat.host.firstName}"></c:out></td>
@@ -171,49 +174,54 @@ td:nth-child(2) {
 										href="/delete/event/${ banat.id }">Delete</a>
 								</p>
 							</c:when>
-							<c:otherwise>
-								<c:choose>
-									<c:when test="${ theLogedInUser.events.contains(banat) } ">
-										<p>
-											Joining <a href="/cancel/event/${ banat.id }">Cancel</a>
-										</p>
 
-									</c:when>
-									<c:otherwise>
-										<p>
-											<a href="/join/event/${ banat.id }">Join</a>
-										</p>
-									</c:otherwise>
-								</c:choose>
+							<c:when test="${banat.usersAttending.contains(theLogedInUser)}">
+								<p>
+									Joining <a href="/cancel/event/${ banat.id }">Cancel</a>
+
+
+								</p>
+
+							</c:when>
+							<c:otherwise>
+								<p>
+									<a href="/join/event/${ banat.id }">Join</a>
+								</p>
 							</c:otherwise>
 						</c:choose></td>
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table><br><br>
+	</table>
+	<br>
+	<br>
 
 	<form:form action="/event/new" method="post" modelAttribute="newEvent">
 		<div class="form-group">
 			<label>Name:</label>
 			<form:input path="name" class="form-control" />
 			<form:errors path="name" class="text-danger" />
-		</div><br>
+		</div>
+		<br>
 		<div class="form-group">
 			<label>Date:</label>
 			<%-- <fmt:formatDate pattern = "MM-dd-yyyy" value = "date" /> --%>
 			<form:input type="date" path="date" class="date" />
 			<form:errors path="date" class="text-danger" />
-		</div><br>
+		</div>
+		<br>
 		<div class="form-group">
 			<label>Location:</label>
 			<form:input path="location" class="form-control" />
 			<form:errors path="location" class="text-danger" />
-		</div><br>
+		</div>
+		<br>
 		<div class="form-group">
 			<label>state:</label>
 			<form:input path="state" class="form-control" />
 			<form:errors path="state" class="text-danger" />
-		</div><br>
+		</div>
+		<br>
 		<input type="submit" value="Create Event" class="btn btn-primary" />
 	</form:form>
 </body>

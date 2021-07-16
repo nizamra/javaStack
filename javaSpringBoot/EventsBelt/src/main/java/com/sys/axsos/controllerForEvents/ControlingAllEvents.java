@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sys.axsos.models.Event;
 import com.sys.axsos.models.LoginUser;
@@ -102,14 +103,18 @@ public class ControlingAllEvents {
 		return "eventcomments.jsp";
 	}
 	
-    @RequestMapping("/newCommentCreation")
+    @PostMapping("/newCommentCreation")
     public String createComment(@Valid @ModelAttribute("commentCreation") MesComment commentCreation, BindingResult result) {
     	if (result.hasErrors()) {
-            return "eventcomments.jsp";
+    		System.out.println("print this if theres an error");
+    		System.out.println(result.toString());
+    		return "eventcomments.jsp";
+//            return "redirect:/show/event/" + idOfThisEvent;
         }
-    	else {
-    		serverOfMyEvents.createNewComment(commentCreation);
-    		return "redirect:/show/event/"+commentCreation.getEvent().getId();
+    	else {System.out.println("try to create");
+    		serverOfMyEvents.createNewComment(commentCreation);System.out.println("Done creating");
+    		return "redirect:/";
+//    		return "redirect:/show/event/"+commentCreation.getEvent().getId();
     	}
     }
 	
@@ -126,7 +131,6 @@ public class ControlingAllEvents {
     	model.addAttribute("SomeEvent",SomeEvent);
     	return "edit.jsp";
     }
-    
     @RequestMapping(value="/editevents/{id}")
     public String update(@Valid @ModelAttribute("wxyz") Event Event, BindingResult result) {
         if (result.hasErrors()) {
@@ -136,7 +140,22 @@ public class ControlingAllEvents {
             return "redirect:/";
         }
     }
-	
+//    @RequestMapping("/songs/edit/{id}")
+//    public String edit(@PathVariable("id") Long id, Model model) {
+//   	 Song songinstance = songrepositoryinstance.findsonginstance(id);
+//        model.addAttribute("songinstance", songinstance);
+//        return "edit.jsp";
+//    }
+//    @RequestMapping(value="/songs/{id}", method=RequestMethod.PUT)
+//    public String update(@Valid @ModelAttribute("songinstance") Song songinstance, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "edit.jsp";
+//        } else {
+//       	 songrepositoryinstance.updatesonginstance(songinstance);
+//            return "redirect:/";
+//        }
+//    }
+    
     @RequestMapping("/delete/event/{id}")
     public String deleteEvent(@PathVariable("id") Long id) {
     	serverOfMyEvents.deleteAnEventById(id);

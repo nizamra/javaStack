@@ -72,9 +72,9 @@
 					<c:forEach items="${thisSomeEventinstance.getMesComments()}"
 						var="comment">
 						<p>
-							<c:out value="${comment.getUser().getFname()}"></c:out>
+							<c:out value="${comment.getWriter().getFirstName()}"></c:out>
 							:
-							<c:out value="${comment.getText()}"></c:out>
+							<c:out value="${comment.getComment()}"></c:out>
 						</p>
 						<p>
 							<c:out value="*********************************"></c:out>
@@ -83,16 +83,16 @@
 				</div>
 			</div>
 			<br> <br> <br>
-			<%--<c:when test="${thisSomeEventinstance.usersAttending.contains(theLogedInUser)}">--%>
+			<%--<c:when test="${thisSomeEventinstance.usersAttending.contains(theLogedInUser)}">
 			<c:forEach items="${thisSomeEventinstance.usersAttending}"
 				var="atendeeses">
 				<c:choose>
-					<c:when test="${ atendeeses.id == theLogedInUser.id}">
+					<c:when test="${ atendeeses.id == theLogedInUser.id}">--%>
 						<form:form action="/newCommentCreation" method="post"
 							modelAttribute="commentCreation">
-							<input type="hidden" name="writer" value="${theLogedInUser}">
-							<input type="hidden" name="event"
-								value="${thisSomeEventinstance.id}">
+							<form:input type="hidden" path="writer" value="${theLogedInUser.id}"/>
+							
+							<form:input type="hidden" path="event" value="${thisSomeEventinstance.id}"/>
 							<p>
 								<form:label path="comment">Comment</form:label>
 								<form:errors path="comment" />
@@ -100,14 +100,14 @@
 							</p>
 							<input type="submit" value="Submit" />
 						</form:form>
-					</c:when>
+					<%--</c:when>
 					<c:otherwise>
 						<p>You can't create a comment since you're not attending this
 							event</p>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-			<%----%>
+			--%>
 		</div>
 	</div>
 </body>

@@ -3,9 +3,7 @@ package com.sys.axsos.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -31,8 +29,7 @@ public class ServingEvents {
 	}
 
 	public List<User> findAllUsers() {
-		return RepU.findAll();
-	}
+		return RepU.findAll();}
 
 	public User registering(@Valid User diyar, BindingResult result) {
 		if (RepU.findByEmail(diyar.getEmail()).isPresent()) {
@@ -72,27 +69,26 @@ public class ServingEvents {
 
 	//	    // find user by id
 	//	    public User findUserById(Long id) {
-	//	    	Optional<User> u = userRepository.findById(id);
-	//	    	if(u.isPresent()) {
-	//	            return u.get();
+	//	    	Optional<User> potentialUser = RepU.findById(id);
+	//	    	if(potentialUser.isPresent()) {
+	//	            return potentialUser.get();
 	//	    	} else {
 	//	    	    return null;
 	//	    	}
 	//	    }
+	
 	public User gettingUser(Long attributatel) {
 		Optional<User> potentialUser = RepU.findById(attributatel);
-		return potentialUser.get();
-	}
+		return potentialUser.get();}
 
 	public List<Event> getAllEvents() {
-		return RepE.findAll();
-	}
+		return RepE.findAll();}
 
 	public List<Event> getkolelEventatMish3indak(Long omarna) {
 		Optional<User> potentialUser = RepU.findById(omarna);
 		User userInThePage = potentialUser.get();
-		return RepE.findByStateNotContaining(userInThePage.getState());
-	}
+		return RepE.findByStateNotContaining(userInThePage.getState());}
+	
 	public List<Event> getkolelEventat3indak(Long omarna) {
 		Optional<User> potentialUser = RepU.findById(omarna);
 		User userInThePage = potentialUser.get();
@@ -101,12 +97,13 @@ public class ServingEvents {
 	public Event singEvent(Event someEvent, Long usId) {
 		someEvent.setHost(gettingUser(usId));
 		return RepE.save(someEvent);}
-
+	
 	public Event getMeSomeEvent(Long nizaRid) {
 		return RepE.findById(nizaRid).get();}
 
 	public void createNewComment(@Valid MesComment commentCreation) {
-		RepM.save(commentCreation);}
+		System.out.println("inside repo criating in progress");
+		RepM.save(commentCreation);System.out.println("Done with repo");}
 
 	public void joinTheEvent(Long id, Long joiningUserID) {
 		Event eventToJoin = getMeSomeEvent(id);
@@ -116,9 +113,14 @@ public class ServingEvents {
 		eventToJoin.setUsersAttending(usersAttindingEvent);
 		RepE.save(eventToJoin);}
 
-	public void updateEvent(@Valid Event event) {
-		RepE.save(event);}
-
+	public void updateEvent(@Valid Event updatedEvent) {
+		Event eventToUpdate = getMeSomeEvent(updatedEvent.getId());
+		eventToUpdate.setName(updatedEvent.getName());
+		eventToUpdate.setDate(updatedEvent.getDate());
+		eventToUpdate.setLocation(updatedEvent.getLocation());
+		eventToUpdate.setState(updatedEvent.getState());
+		RepE.save(eventToUpdate);}	
+	
 	public void deleteAnEventById(Long id) {
 		RepE.deleteById(id);}
 
@@ -131,34 +133,7 @@ public class ServingEvents {
 		RepE.save(eventToChange);
 	}
 
-	//	    // authenticate user
-	//	    public boolean authenticateUser(String email, String password) {
-	//	        // first find the user by email
-	//	        User user = userRepository.findByEmail(email);
-	//	        // if we can't find it by email, return false
-	//	        if(user == null) {
-	//	            return false;
-	//	        } else {
-	//	            // if the passwords match, return true, else, return false
-	//	            if(BCrypt.checkpw(password, user.getPassword())) {
-	//	                return true;
-	//	            } else {
-	//	                return false;
-	//	            }
-	//	        }
-	//	    }
 
-	//		public  void createEvent(@Valid newEvent x) {
-	//			User user=findbyid(x.getUser_id());
-	//			Event event=new Event();
-	//			event.setHost(user);
-	//			event.setName(x.getEventname());
-	//			//check if state already exists or not
-	//			State state=SR.findByName(x.getState()).orElse(null);
-	//			event.setState(state);
-	//			event.setLocation(x.getEventlocation());
-	//			ER.save(event);
-	//		}
 
 	//		public State newstate(@Valid State x) {
 	//			System.out.println(x.getName());
