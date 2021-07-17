@@ -6,6 +6,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/persons/new">Person</a>
+<a href="/licenses/new">Licenses</a>
 <h1>***************************************</h1>
 <c:forEach items="${x }" var="i">
 <c:out value="${i.fname }"></c:out>

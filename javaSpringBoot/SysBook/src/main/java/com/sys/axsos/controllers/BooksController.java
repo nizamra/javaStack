@@ -1,4 +1,4 @@
-package com.sys.axsos;
+package com.sys.axsos.controllers;
 
 import java.util.List;
 
@@ -29,6 +29,7 @@ public class BooksController {
      model.addAttribute("books", books);
      return "/books/index.jsp";
 }
+ 
  @RequestMapping("/books/{id}")
  public String showhh(Model model,@PathVariable("id") Long id) {
 	 UpdateHere book = bookService.findBook(id);
@@ -46,6 +47,22 @@ public class BooksController {
          return "/books/new.jsp";
      } else {
          bookService.createBook(book);
+         return "redirect:/books";
+     }
+ }
+ @RequestMapping("/books/{id}/edit")
+ public String edit(@PathVariable("id") Long id, Model model) {
+	 UpdateHere book = bookService.findBook(id);
+     model.addAttribute("book", book);
+     return "/books/edit.jsp";
+ }
+ 
+ @RequestMapping(value="/books/{id}", method=RequestMethod.PUT)
+ public String update(@Valid @ModelAttribute("book") UpdateHere book, BindingResult result) {
+     if (result.hasErrors()) {
+         return "/books/edit.jsp";
+     } else {
+         bookService.updateBook(book);
          return "redirect:/books";
      }
  }

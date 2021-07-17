@@ -33,6 +33,22 @@ public class service {
     	changable.setNumberOfPages(numOfPages);
     	return bookRepository.save(changable);
     }
+    public UpdateHere updateBook(UpdateHere b) {
+    	UpdateHere changthis = findBook(b.getId());
+    	changthis.setTitle(b.getTitle());
+    	changthis.setDescription(b.getDescription());
+    	changthis.setLanguage(b.getLanguage());
+    	changthis.setNumberOfPages(b.getNumberOfPages());
+    	return bookRepository.save(changthis);
+    }
+//    public Book updateBook(Book b) {
+//    	Book changethisbook = findBook(b.getId());
+//    	changethisbook.setTitle(b.getTitle());
+//    	changethisbook.setDescription(b.getDescription());
+//    	changethisbook.setLanguage(b.getLanguage());
+//    	changethisbook.setNumberOfPages(b.getNumberOfPages());
+//    	return bookRepository.save(changethisbook);
+//    }
     
     public void deleteBook(Long id) {
 		bookRepository.deleteById(id);

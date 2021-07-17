@@ -1,6 +1,7 @@
 package com.codingdojo.relationships.controller;
 
 import java.util.List;
+import java.util.Scanner;
 
 import javax.validation.Valid;
 
@@ -21,6 +22,14 @@ private final relationService rs;
 public RelationApi(relationService rs) {
 	this.rs = rs;
 }
+//@RequestMapping("/read/all")
+//public String readAll() {
+//	@SuppressWarnings("resource")
+//	Scanner hashish = new Scanner(System.in);
+//	String oneLine = hashish.nextLine();
+//	System.out.println(oneLine);
+//	return "/relationships/def.jsp";
+//}
 @RequestMapping("/persons/new")
 public String newPerson(@ModelAttribute("Person") Person Person) {
 	return "/relationships/newPerson.jsp";
